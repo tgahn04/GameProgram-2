@@ -15,6 +15,9 @@ public class Kiwi : MonoBehaviour
 
     private void Update()
     {
+        if (!Game_Manager.Instance.Property)
+            return;
+
         T += Time.deltaTime * speed;
 
         float rotation = Mathf.PingPong(T, range);
