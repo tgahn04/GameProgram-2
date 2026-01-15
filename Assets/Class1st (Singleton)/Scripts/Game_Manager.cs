@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 public class Game_Manager : MonoBehaviour
 {
@@ -20,7 +21,15 @@ public class Game_Manager : MonoBehaviour
                 instance = FindObjectOfType<Game_Manager>();
             }
 
-            return instance; 
+            if (instance == null)
+            {
+                GameObject clone = new GameObject(nameof(Game_Manager));
+                instance = clone.AddComponent<Game_Manager>();
+
+                Debug.Log("Game_Manager 생성됨");
+            }
+
+            return instance;
         }
     }
 
@@ -31,7 +40,7 @@ public class Game_Manager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        instance = this;
+        // instance = this;
     }
 
     public void Start()
