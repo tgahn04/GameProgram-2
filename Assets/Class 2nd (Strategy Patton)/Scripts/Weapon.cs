@@ -2,6 +2,11 @@
 
 public abstract class Weapon : MonoBehaviour
 {
-    public abstract void Attack();
+    protected Animator animator;
 
+    protected virtual void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+    public abstract void Attack();
 }
