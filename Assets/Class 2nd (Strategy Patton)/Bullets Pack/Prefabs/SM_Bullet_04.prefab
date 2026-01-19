@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Create_Bullet
   speed: 10
+  duration: 5
+  direction: {x: 0, y: 1, z: 0}
 --- !u!1 &7634787681260851454
 GameObject:
   m_ObjectHideFlags: 0
