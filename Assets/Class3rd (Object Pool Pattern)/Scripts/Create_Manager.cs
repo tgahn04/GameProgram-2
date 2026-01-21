@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Create_Manager : MonoBehaviour
 {
-    [SerializeField] GameObject Minotaur;
     [SerializeField] float SpawnInterval;
     [SerializeField] float SpawnPoint;
     [SerializeField] Vector3 SpawnOffset;
@@ -36,7 +35,12 @@ public class Create_Manager : MonoBehaviour
 
     void SpawnMinotaur()
     {
-        if (Minotaur == null || Portal == null)
+        if (Portal == null || Object_Pool.Instance == null)
+            return;
+
+        GameObject minotaur = Object_Pool.Instance.GetObject();
+
+        if (minotaur == null)
             return;
 
         Vector2 direction = Random.insideUnitCircle.normalized;
@@ -49,6 +53,8 @@ public class Create_Manager : MonoBehaviour
 
         Quaternion rotation = Quaternion.LookRotation(lookDir);
 
-        Instantiate(Minotaur, spawnPosition, rotation);
+        minotaur.transform.position = spawnPosition;
+        minotaur.transform.rotation = rotation;
+        minotaur.SetActive(true);
     }
 }

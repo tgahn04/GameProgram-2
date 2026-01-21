@@ -28,7 +28,7 @@ public class Move : MonoBehaviour
 
         if (direction.magnitude <= arriveDistance)
         {
-            Destroy(gameObject);
+            Object_Pool.Instance.ReturnObject(gameObject);
         }
     }
 }
