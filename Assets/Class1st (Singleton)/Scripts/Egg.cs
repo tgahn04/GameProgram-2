@@ -15,7 +15,7 @@ public class Egg : MonoBehaviour
 
     private void Update()
     {
-        if (!Game_Manager.Instance.Property)
+        if (!global::T.Instance.Property)
             return;
 
         T += Time.deltaTime * speed;

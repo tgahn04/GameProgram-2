@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-public class Game_Manager : MonoBehaviour
+public class T : MonoBehaviour
 {
     [SerializeField] bool state;
 
@@ -10,21 +10,21 @@ public class Game_Manager : MonoBehaviour
         get { return state; }
     }
 
-    private static Game_Manager instance;
+    private static T instance;
 
-    public static Game_Manager Instance
+    public static T Instance
     {
         get 
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<Game_Manager>();
+                instance = FindObjectOfType<T>();
             }
 
             if (instance == null)
             {
-                GameObject clone = new GameObject(nameof(Game_Manager));
-                instance = clone.AddComponent<Game_Manager>();
+                GameObject clone = new GameObject(nameof(T));
+                instance = clone.AddComponent<T>();
 
                 Debug.Log("Game_Manager 생성됨");
             }
@@ -39,8 +39,6 @@ public class Game_Manager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        // instance = this;
     }
 
     public void Start()

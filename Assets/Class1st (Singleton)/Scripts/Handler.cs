@@ -9,7 +9,7 @@ public class Handler : MonoBehaviour
     {
         pauseBotton = GetComponent<Button>();
 
-        pauseBotton.onClick.AddListener(Game_Manager.Instance.Pause);
+        pauseBotton.onClick.AddListener(T.Instance.Pause);
     }
 
 }
