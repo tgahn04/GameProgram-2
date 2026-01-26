@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Reward : MonoBehaviour
+public class Reward : MonoBehaviour, IRewardable
 {
     [SerializeField] Item item;
     [SerializeField] Item[] items;
 
-    [SerializeField] Data[] dataList;
+    [SerializeField] Item[] dataList;
 
     [SerializeField] Sprite sprite;
     [SerializeField] Image image;
 
     [SerializeField] int random;
+
+    public void Receive()
+    {
+        Debug.Log(gameObject.name);
+    }
 
     private void Awake()
     {
