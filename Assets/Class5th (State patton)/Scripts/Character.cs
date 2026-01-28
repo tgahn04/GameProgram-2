@@ -26,7 +26,6 @@ public class Character : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Start 호출됨");
         ChangeState(idleState);
     }
 
@@ -37,14 +36,15 @@ public class Character : MonoBehaviour
         HandleInput();
     }
 
-    private void ChangeState(IStateavle newState)
+    public void ChangeState(IStateavle newState)
     {
-         Debug.Log($"ChangeState 호출: {newState?.Type}");
-
         if (currentState == newState)
             return;
 
-        currentState?.Exit(this);
+        if(currentState != null)
+        {
+            currentState.Exit(this);
+        }
 
         currentState = newState;
 
@@ -53,8 +53,6 @@ public class Character : MonoBehaviour
 
     private void HandleInput()
     {
-        Debug.Log($"현재 상태: {currentState.Type}");
-
         switch (currentState.Type)
         {
             case StateType.IDLE:
@@ -86,7 +84,7 @@ public class Character : MonoBehaviour
 
     public void SetWalk(bool value)
     {
-        animator.SetBool("IsWalk", value);
+        animator.SetBool("Walk", value);
     }
 
     public void TriggerAttack()
@@ -94,7 +92,14 @@ public class Character : MonoBehaviour
         animator.SetTrigger("Attack");
     }
 
-    public void OnAttackAnimationEnd()
+    public bool AttackFinished()
+    {
+        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+   
+        return info.IsName("Attack") == false;
+    }
+   
+    public void ChangeToIdle()
     {
         ChangeState(idleState);
     }

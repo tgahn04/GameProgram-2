@@ -9,6 +9,10 @@
 
     public void Update(Character character)
     {
+        if (character.AttackFinished())
+        {
+            character.ChangeToIdle();
+        }
     }
 
     public void Exit(Character character)
