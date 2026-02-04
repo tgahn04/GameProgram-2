@@ -17,4 +17,18 @@ public class Quest_Manager : Singleton<Quest_Manager>
 
         questList.Add(quest);
     }
+
+    public void Complete(string questName)
+    {
+        Quest quest = questList.Find(mission => mission.Title == questName);
+
+        if (quest != null)
+        {
+            return;
+        }
+
+        quest.Completed = true;
+
+        OnQuestCompleted?.Invoke(quest);
+    }
 }
